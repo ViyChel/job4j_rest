@@ -1,0 +1,21 @@
+language: java
+jdk:
+- openjdk15
+services:
+- postgresql
+
+install: true
+sudo: false
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+notifications:
+  email:
+    recipients: for.viy@gmail.com
+    on_success: never
+    on_failure: always
+
+env:
+  global:
+    - CODECOV_TOKEN="2e3c53be-27bf-484d-87e0-b612200f65cd"
+
+
