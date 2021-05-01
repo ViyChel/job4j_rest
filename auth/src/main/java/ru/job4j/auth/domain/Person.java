@@ -2,10 +2,7 @@ package ru.job4j.auth.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Class Person.
@@ -22,9 +19,12 @@ public class Person {
     private int id;
     private String login;
     private String password;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     public static Person of(String login, String password) {
-        Person person = new Person();
+        var person = new Person();
         person.setLogin(login);
         person.setPassword(password);
         return person;
